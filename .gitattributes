@@ -1,2 +1,2 @@
 spacemacs/.spacemacs.d/misc/config_mu4e.el filter=git-crypt diff=git-crypt
-spacemacs/.spacemacs.d/snippets/mu4e-compose-mode/*
+spacemacs/.spacemacs.d/snippets/mu4e-compose-mode/* filter=git-crypt diff=git-crypt
