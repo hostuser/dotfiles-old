@@ -1,0 +1,8 @@
+recoll/.recoll/idxstatus*
+recoll/.recoll/index.pid
+secret/
+*~
+ssh/.ssh/*rsa*
+ssh/.ssh/sockets
+.git/
+leiningen/.lein/self-installs
