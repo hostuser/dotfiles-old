@@ -6,3 +6,4 @@ ssh/.ssh/*rsa*
 ssh/.ssh/sockets
 .git/
 leiningen/.lein/self-installs
+zsh/.zsh-update
