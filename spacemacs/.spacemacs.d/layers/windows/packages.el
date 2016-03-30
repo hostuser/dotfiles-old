@@ -30,7 +30,13 @@
 ;;; Code:
 
 (defconst windows-packages
-  '(zoom-window key-chord))
+  '(zoom-window key-chord noflet))
+
+(defun windows/init-noflet ()
+
+  (use-package noflet
+    :ensure noflet)
+  )
 
 ;;;; shortcut key to full-screen a window, and exit full-screen when pressed again
 (defun windows/init-zoom-window ()
