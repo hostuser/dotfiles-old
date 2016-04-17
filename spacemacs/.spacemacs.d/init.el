@@ -45,7 +45,8 @@ values."
      syntax-checking
      pandoc
      lua
-     ;; markdown
+     python
+     markdown
      (org :variables org-enable-github-support t)
      ;; (shell :variables
      ;;        shell-default-height 30
@@ -128,13 +129,13 @@ values."
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
    ;; (default "M-m")
-   dotspacemacs-emacs-leader-key "M-m"
+   dotspacemacs-emacs-leader-key "M-SPC"
    ;; Major mode leader key is a shortcut key which is the equivalent of
    ;; pressing `<leader> m`. Set it to `nil` to disable it. (default ",")
    dotspacemacs-major-mode-leader-key ","
    ;; Major mode leader key accessible in `emacs state' and `insert state'.
    ;; (default "C-M-m)
-   dotspacemacs-major-mode-emacs-leader-key "C-M-m"
+   dotspacemacs-major-mode-emacs-leader-key "M-m"
    ;; These variables control whether separate commands are bound in the GUI to
    ;; the key pairs C-i, TAB and C-m, RET.
    ;; Setting it to a non-nil value, allows for separate commands under <C-i>
@@ -265,6 +266,14 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
 
+  ;; set xdg data dirs for stuff that is installed via nix
+  (setenv "XDG_DATA_DIRS"
+          (concat
+           "/home/markus/.nix-profile/share" ":"
+           "/usr/share/custom" ":"
+           "/usr/local/share" ":"
+           "/usr/share"))
+
   ;; store backups in a common folder, do version control, don't delete anything
   (setq backup-directory-alist '(("." . "~/.backups/emacs")))
   (setq delete-old-versions -1)
@@ -305,11 +314,18 @@ you should place you code here."
   (global-set-key (kbd "C-z") nil)
   (put 'suspend-frame 'disabled t)
 
+  ;; expand-region retract key, I don't like 'V'
+  (setq expand-region-contract-fast-key "J")
+
   ;; configure org mode
   (with-eval-after-load 'org
     (require 'config_org))
 
   (require 'config_helm)
+
+  (setq tramp-default-method "ssh")
+
+  (setq x-select-enable-primary t)
 
   (global-company-mode)
 

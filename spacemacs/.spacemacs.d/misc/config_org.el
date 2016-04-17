@@ -12,9 +12,13 @@
   ;; (define-key org-mode-map (kbd "C-c \\") nil)
   ;; (define-key org-mode-map (kbd "C-c <") nil)
   ;; (define-key org-mode-map (kbd "C-c >") nil)
+
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode "w" 'widen)
+
   (setq org-todo-keywords
         '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
-
+  (setq org-todo-keyword-faces
+        '(("TODO" . org-warning) ("WAIT" . "blue") ("CANCELLED" . (:foreground "blue" :weight bold))))
 
   (require 'ox-latex)
   (add-to-list 'org-latex-classes
@@ -59,11 +63,14 @@
 
   (setq org-directory "~/Documents/notes")
 
+  (setq org-return-follows-link nil)
+  (setq org-read-date-prefer-future nil)
   (setq org-agenda-files
         (list "~/Documents/notes/todo_personal.org"
               ;; "~/Work/research-data-management/rdm.org"
               ;; "~/Work/figshare/figshare.org"
-              "~/Projects/Misc/rdm_todo.org"))
+              "~/Projects/Misc/rdm_todo.org"
+              "~/Documents/memacs/mail.org"))
 
 
 
@@ -105,6 +112,7 @@
 
 
   )
+
 
 
 (provide 'config_org)

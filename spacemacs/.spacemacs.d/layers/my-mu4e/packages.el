@@ -29,8 +29,11 @@
 
 ;;; Code:
 
+(setq mu4e-mu-binary "~/.nix-profile/bin/mu")
+(setq mu4e-msg2pdf "/usr/bin/msg2pdf")
 (setq my-mu4e-packages
       '((mu4e :location built-in) smtpmail-multi))
+
 
 
 ;;;; smtpmail-multi
@@ -78,7 +81,7 @@
                (:subject       .  nil)))
 
       (setq mu4e-get-mail-command "true")
-      (setq mu4e-update-interval 60)
+      (setq mu4e-update-interval 20)
 
       (setq message-kill-buffer-on-exit t)
       (setq mu4e-attachment-dir  "~/Downloads")
@@ -90,7 +93,7 @@
       (setq mu4e-headers-visible-lines 16)
 
       (setq mu4e-view-show-images t)
-
+      (setq org-mu4e-link-query-in-headers-mode t)
       (require 'mu4e-contrib)
 
       (setq mu4e-html2text-command 'mu4e-shr2text)

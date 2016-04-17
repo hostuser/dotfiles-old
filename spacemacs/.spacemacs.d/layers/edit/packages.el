@@ -30,7 +30,12 @@
 ;;; Code:
 
 (defconst edit-packages
-  '(whole-line-or-region easy-kill))
+  '(whole-line-or-region easy-kill multiple-cursors password-generator))
+
+(defun edit/init-password-generator ()
+  (use-package password-generator
+    :ensure password-generator
+    ))
 
 ;;;; using "C-w" to kill a whole line if there is no active region
 (defun edit/init-whole-line-or-region ()
@@ -52,7 +57,14 @@
     )
   )
 
-
+(defun edit/init-multiple-cursors ()
+  (setq mc/list-file "~/.spacemacs.d/.mc-lists.el")
+  (use-package multiple-cursors
+    :ensure multiple-cursors
+    :init
+    (progn
+      (global-set-key (kbd "C-)") 'mc/edit-beginnings-of-lines)
+      (global-set-key (kbd "C-(") 'mc/mark-all-dwim))))
 
 
 ;;; packages.el ends here
