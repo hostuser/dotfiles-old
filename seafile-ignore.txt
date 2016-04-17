@@ -29,4 +29,14 @@ emacs/.emacs.d/url/
 .git-crypt/
 leiningen/.lein/self-installs
 mutt/.mutt/mutt-colors-solarized/.git
-
+gnupg/.gnupg/gpg-agent-info-go
+gnupg/.gnupg/private-keys-v1.d
+gnupg/.gnupg/pubring.gpg
+gnupg/.gnupg/random_seed
+gnupg/.gnupg/secring.gpg
+gnupg/.gnupg/S.gpg-agent
+gnupg/.gnupg/S.gpg-agent.ssh
+gnupg/.gnupg/sshcontrol
+gnupg/.gnupg/trustdb.gpg
+gnupg/.gnupg/.private-keys-v1.d
+gnupg/.gnupg/gpg-v21-migrated
