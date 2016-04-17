@@ -47,6 +47,7 @@ values."
      lua
      python
      markdown
+     yaml
      (org :variables org-enable-github-support t)
      ;; (shell :variables
      ;;        shell-default-height 30
