@@ -40,3 +40,4 @@ gnupg/.gnupg/sshcontrol
 gnupg/.gnupg/trustdb.gpg
 gnupg/.gnupg/.private-keys-v1.d
 gnupg/.gnupg/gpg-v21-migrated
+zsh/.zplug
