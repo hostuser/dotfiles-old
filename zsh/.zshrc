@@ -94,6 +94,11 @@ debian_desktop() {
     docker run -it --rm -p 5901:5901 -v $1:/data -e USER=root debian-desktop bash
 }
 
+password_entries() {
+      local IFS=$'\n'
+      local prefix="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
+      find -L "$prefix" \( -name .git -o -name .gpg-id \) -prune -o $@ -print 2>/dev/null | sed -e "s#${prefix}/\{0,1\}##" -e 's#\.gpg##' | sort
+}
 
 
 function exists { which $1 &> /dev/null }
@@ -150,6 +155,12 @@ alias nup='nix-channel --update && nix-env --upgrade'
 
 # misc
 alias my_ip='curl  http://echoip.com'
+alias get_pass="password_entries | grep -i / | percol | sed 's/.*/\"&\"/' | xargs pass "
+
+# temporary aliases
+alias old_pass='export PASSWORD_STORE_DIR=~/.password-store-old pass'
+alias op='PASSWORD_STORE_DIR=~/.password-store-old pass'
+alias old_get_pass="PASSWORD_STORE_DIR=~/.password-store-old password_entries | grep -i / | percol | sed 's/.*/\"&\"/'| PASSWORD_STORE_DIR=~/.password-store-old xargs pass "
 
 ## apps
 if exists htop; then
