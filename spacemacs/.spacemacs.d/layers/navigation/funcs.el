@@ -17,3 +17,37 @@
   (org-narrow-to-subtree)
   (show-children)
   )
+
+(defhydra hydra-navigation (:color amaranth :columns 3)
+  "Navigation commands"
+  ("j" outline-next-visible-heading "next heading")
+  ("k" outline-previous-visible-heading "prev heading")
+  ("J" org-forward-heading-same-level "next heading at same level")
+  ("K" org-backward-heading-same-level "prev heading at same level")
+  ("w" widen "widen" :exit nil)
+  ("n" org-narrow-to-subtree "narrow to subtree" :exit nil)
+
+  ("g" beginning-of-buffer "beginning of page")
+  ("<" beginning-of-buffer "beginning of page")
+  ("G" end-of-buffer "end of page")
+  (">" end-of-buffer "end of page")
+
+  ("u" outline-up-heading "up heading")
+  ("M-." org-demote-subtree "demote subtree")
+  ("M-," org-promote-subtree "promote subtree")
+  ("M-j" org-move-subtree-down "move subtree down")
+  ("M-k" org-move-subtree-up "move subtree up")
+  ("t" hs-toggle-hiding "toggle block")
+  ("s" hs-show-block "show block")
+  ("S" hs-show-all "show all")
+  ("d" hs-hide-block "hide block")
+  ("D" hs-hide-all "hide all")
+  ("/" makkus/org-find-and-enter "find and enter" :exit nil)
+  ;;("g" org-goto "goto" :exit t)
+
+  ("SPC" nil "quit")
+  ("RET" nil "quit")
+  ;; ("RET" nil "quit")
+  ("q" nil "quit"))
+
+(key-chord-define-global ";j" 'hydra-navigation/body)

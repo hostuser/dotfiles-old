@@ -30,7 +30,13 @@
 ;;; Code:
 
 (defconst navigation-packages
-  '(key-chord imenu-anywhere))
+  '(key-chord imenu-anywhere hydra))
+
+(defun navigation/init-hydra ()
+
+  (use-package hydra
+    :ensure hydra
+    ))
 
 (defun navigation/init-imenu-anywhere ()
 

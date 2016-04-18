@@ -70,6 +70,7 @@
               ;; "~/Work/research-data-management/rdm.org"
               ;; "~/Work/figshare/figshare.org"
               "~/Projects/Misc/rdm_todo.org"
+              "~/Projects/rdm-uspo/rdm_tasks.org"
               "~/Documents/memacs/mail.org"))
 
 
