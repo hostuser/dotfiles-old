@@ -1,0 +1,19 @@
+[user]
+	email = makkus@gmail.com
+	name = Markus Binsteiner
+[alias]
+	co = checkout
+	uncommit = reset HEAD^
+	ct = commit
+	st = status
+	br = branch
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+	type = cat-file -t
+	dump = cat-file -p
+
+[core]
+	safecrlf = true
+	autocrlf = input
+
+[push]
+	default = simple
