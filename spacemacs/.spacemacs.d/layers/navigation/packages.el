@@ -111,6 +111,7 @@
       ;; (key-chord-define-global "jg" 'avy-goto-line)
       (key-chord-define-global "jl" 'avy-goto-line)
       (key-chord-define-global "JL" 'makkus/avy-goto-end-of-line)
+      (key-chord-define-global ";j" 'hydra-navigation/body)
       ;; (key-chord-define-global "jf" 'hydra-goto-commands/body)
       ;; (key-chord-define-global "jj" 'avy-goto-char-2)
       ;; (key-chord-define-global "jp" 'hydra-smartparens/body)
