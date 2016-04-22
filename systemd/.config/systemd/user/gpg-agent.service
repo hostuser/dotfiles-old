@@ -1,0 +1,14 @@
+[Unit]
+Description=GnuPG private key agent
+IgnoreOnIsolate=true
+Wants=setenv.service
+After=setenv.service
+
+[Service]
+Type=forking
+ExecStart=/home/markus/.nix-profile/bin/gpg-agent --enable-ssh-support --daemon
+ExecStop=/usr/bin/pkill gpg-agent
+Restart=on-abort
+
+[Install]
+WantedBy=setenv.service

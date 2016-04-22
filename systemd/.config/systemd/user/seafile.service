@@ -1,0 +1,10 @@
+[Unit]
+Description=Seafile client
+After=setenv.target
+Requires=setenv.target
+
+[Service]
+ExecStart=/home/markus/.nix-profile/bin/seafile-applet
+
+[Install]
+WantedBy=setenv.target

@@ -1,0 +1,12 @@
+[Unit]
+Description=davmail: exchange <-> dav proxy server
+After=default.target
+
+[Service]
+# EnvironmentFile=/home/markus/.config/systemd/xenv
+ExecStart=/home/markus/.nix-profile/bin/davmail.sh
+ExecStop=/usr/bin/pkill -f '.*davmail.DavGateway'
+Restart=always
+
+[Install]
+WantedBy=default.target

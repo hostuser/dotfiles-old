@@ -1,0 +1,11 @@
+[Unit]
+Description=debugging
+After=default.target
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/bash -c /home/markus/local/bin/debug.sh
+#EnvironmentFile=/home/markus/.config/systemd/xenv
+
+[Install]
+WantedBy=default.target

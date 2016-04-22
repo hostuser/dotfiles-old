@@ -1,0 +1,4 @@
+[Unit]
+Description=xinitrc stuff
+Requires=default.target
+After=default.target

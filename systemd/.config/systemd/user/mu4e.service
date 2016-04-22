@@ -1,0 +1,11 @@
+[Unit]
+Description=Emacs: the extensible, self-documenting text editor
+After=emacs.service
+Requires=emacs.service
+
+[Service]
+Type=simple
+ExecStart=/home/markus/local/bin/mu4e
+
+[Install]
+WantedBy=emacs.service

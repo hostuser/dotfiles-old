@@ -1,0 +1,11 @@
+[Unit]
+Description=KeePass app
+After=default.target
+
+[Service]
+ExecStart=/home/markus/.nix-profile/bin/keepass
+Environment=XAUTHORITY=/home/markus/.Xauthority
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=default.target

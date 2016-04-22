@@ -1,0 +1,11 @@
+[Unit]
+Description=firefox browser
+After=setenv.target
+
+[Service]
+ExecStart=/home/markus/.nix-profile/bin/firefox
+ExecStop=/usr/bin/pkill firefox
+
+
+[Install]
+WantedBy=setenv.target

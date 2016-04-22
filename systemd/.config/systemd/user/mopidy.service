@@ -1,0 +1,9 @@
+[Unit]
+Description=Mopidy music server
+After=default.target
+[Service]
+ExecStart=/home/markus/.nix-profile/bin/mopidy
+restart=always
+
+[Install]
+WantedBy=default.target

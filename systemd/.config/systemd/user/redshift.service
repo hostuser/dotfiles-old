@@ -1,0 +1,12 @@
+[Unit]
+Description=Redshift
+After=default.target
+
+[Service]
+ExecStart=/home/markus/.nix-profile/bin/redshift -l  36.8406:174.7400 -m randr -t 6500:3700
+Restart=on-success
+EnvironmentFile=/home/markus/.config/systemd/xenv
+
+
+[Install]
+WantedBy=default.target

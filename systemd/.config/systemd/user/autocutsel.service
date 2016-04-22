@@ -1,0 +1,12 @@
+[Unit]
+Description=autocutsel clipboard 
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/home/markus/.nix-profile/bin/autocutsel -s PRIMARY -fork
+ExecStart=/home/markus/.nix-profile/bin/autocutsel -fork
+EnvironmentFile=/home/markus/.config/systemd/xenv
+
+[Install]
+WantedBy=graphical.target

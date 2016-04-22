@@ -1,0 +1,13 @@
+[Unit]
+Description=keyboard remappings
+After=default.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/xkbcomp -I/home/markus/config/xkb /home/markus/config/xkb/keymap/filco $DISPLAY
+RemainAfterExit=yes
+Environment=XAUTHORITY=/home/markus/.Xauthority
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=default.target

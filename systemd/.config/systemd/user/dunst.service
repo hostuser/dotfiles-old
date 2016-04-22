@@ -1,0 +1,11 @@
+[Unit]
+Description=dunst notifications
+After=default.target
+
+[Service]
+ExecStart=/home/markus/.nix-profile/bin/dunst -config /home/markus/config/dunst/dunstrc
+Environment=XAUTHORITY=/home/markus/.Xauthority
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=default.target

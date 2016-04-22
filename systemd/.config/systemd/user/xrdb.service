@@ -1,0 +1,13 @@
+[Unit]
+Description=Xrdb
+After=default.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/xrdb %h/.Xresources
+Environment=XAUTHORITY=/home/markus/.Xauthority
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=Check work inbox every minute
+Wants=gpg-agent.service
+After=gpg-agent.service
+
+[Timer]
+# OnBootSec=5min
+OnCalendar=*:0/4
+# Unit=mail_inbox.target
+Unit=mail_work_folders.service
+

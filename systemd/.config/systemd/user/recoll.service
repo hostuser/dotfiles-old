@@ -1,0 +1,10 @@
+[Unit]
+Description=recoll index deamon
+After=default.target
+
+[Service]
+ExecStart=/home/markus/.nix-profile/bin/recollindex -m -D
+EnvironmentFile=/home/markus/.config/systemd/xenv
+
+[Install]
+WantedBy=default.target

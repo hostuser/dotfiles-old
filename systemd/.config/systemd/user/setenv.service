@@ -1,0 +1,12 @@
+[Unit]
+Description=Setup environment
+Wants=default.target
+After=default.target
+
+[Service]
+Type=oneshot
+# Environment=SSH_AUTH_SOCK=%t/ssh_auth_sock
+ExecStart=/home/markus/local/bin/systemd_setenv 
+
+[Install]
+WantedBy=default.target

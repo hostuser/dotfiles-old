@@ -1,0 +1,3 @@
+#!/bin/bash
+
+emacsclient -s markus -c -F '((name . "edit-temporary")(width . 140)(height . 45))' $@

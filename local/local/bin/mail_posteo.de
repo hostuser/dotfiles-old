@@ -1,0 +1,4 @@
+#! /bin/bash
+
+mail_inbox.sh posteo
+mail_folders.sh posteo

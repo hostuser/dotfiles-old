@@ -1,0 +1,9 @@
+[Unit]
+Description=Prints the date every minute
+
+[Service]
+Type=simple
+ExecStart=/bin/date
+
+[Install]
+WantedBy=mail_input.target

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+emacsclient -s markus -c -e -F '((name . "org-capture")(width . 140)(height . 45))' --eval '(makkus/org-capture)'

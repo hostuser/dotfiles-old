@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# emacs --no-desktop --name "mu4e" --eval '(mu4e)'
+
+emacsclient -s markus -c -F '((name . "mu4e"))' -e '(progn (mu4e)(delete-other-windows))'

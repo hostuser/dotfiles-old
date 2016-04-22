@@ -1,0 +1,6 @@
+[Unit]
+Description=Check work inbox
+
+[Service]
+Type=simple
+ExecStart=/home/markus/local/bin/mail_folders.sh posteo
