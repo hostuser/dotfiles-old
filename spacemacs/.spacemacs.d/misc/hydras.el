@@ -52,6 +52,5 @@
   ("q" nil "quit" :quit t))
 
 
-
 (provide 'hydras)
 ;;; hydras.el ends here
