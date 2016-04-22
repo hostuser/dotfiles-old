@@ -18,4 +18,3 @@
   (show-children)
   )
 
-(key-chord-define-global ";j" 'hydra-navigation/body)
