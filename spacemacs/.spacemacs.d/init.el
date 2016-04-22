@@ -318,11 +318,18 @@ you should place you code here."
   ;; expand-region retract key, I don't like 'V'
   (setq expand-region-contract-fast-key "J")
 
+  ;; aggressive-indent
+  (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+  (add-hook 'python-mode-hook #'aggressive-indent-mode)
   ;; configure org mode
   (with-eval-after-load 'org
     (require 'config_org))
 
   (require 'config_helm)
+
+  ;; use C-p/C-n in comint mode, instead of M-p/M-n
+  (define-key comint-mode-map (kbd "C-p") 'comint-previous-input)
+  (define-key comint-mode-map (kbd "C-n") 'comint-next-input)
 
   (setq tramp-default-method "ssh")
 
