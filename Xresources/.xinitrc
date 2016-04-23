@@ -1,13 +1,20 @@
-#!/usr/bin/env bash
+#!/bin/zsh
+
+# Test if $1 is available
+isavailable() {
+    type "$1" &>/dev/null
+}
 
 xrdb -merge ~/.Xresources
+xkbcomp -I$HOME/dotfiles/xkb $HOME/dotfiles/xkb/keymap/filco $DISPLAY
 
-#dbus-launch --sh-syntax --exit-with-session i3 -V -d all > ~/.i3/i3log-$(date +'%F-%k-%M-%S') 2>&1d
+isavailable autocutsel && {
+    autocutsel -fork &
+    autocutsel -selection PRIMARY -fork &
+}
 
-xkbcomp -I$HOME/dotfiles/xkb $HOME/dotfiles/xkb/keymap/filco $DISPLAY 
+isavailable redshift && redshift &
 
-if type "udiskie" > /dev/null; then
-    udiskie --tray --use-udisks2 &
-fi
+isavailable udiskie && udiskie --tray --use-udisks2 &
 
 exec i3
