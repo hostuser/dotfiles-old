@@ -7,7 +7,9 @@ then
 fi
 
 # virtualenvwrapper
-source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+if [ -e /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]; then . /usr/share/virtualenvwrapper/virtualenvwrapper.sh; fi
+if [ -e /usrlocal/bin/virtualenvwrapper.sh ]; then . /usr/local/bin/virtualenvwrapper.sh; fi
+
 export WORKON_HOME=~/.virtualenvs
 if [ -e /home/markus/.nix-profile/etc/profile.d/nix.sh ]; then . /home/markus/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 eval $(thefuck --alias)
