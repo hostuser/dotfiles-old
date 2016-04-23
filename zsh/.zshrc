@@ -224,11 +224,12 @@ if exists fasd; then
     alias z='f -e zile'
 fi
 
-source /usr/local/bin/virtualenvwrapper.sh
+if [ -e /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]; then . /usr/share/virtualenvwrapper/virtualenvwrapper.sh; fi
+if [ -e /usrlocal/bin/virtualenvwrapper.sh ]; then . /usr/local/bin/virtualenvwrapper.sh; fi
+
 export WORKON_HOME=$HOME/.virtualenvs
 
-export NIXPKGS=$HOME/Projects/Install/nix/nixpkgs
-
+export NIXPKGS=$HOME/src/system/nixpkgs
 
 # don't use cached auto-complete
 zstyle ":completion:*:commands" rehash 1
