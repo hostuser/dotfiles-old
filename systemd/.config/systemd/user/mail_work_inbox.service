@@ -1,6 +1,5 @@
 [Unit]
 Description=Check work inbox
-Wants=mail_inbox.timer
 
 [Service]
 Type=simple
