@@ -3,13 +3,19 @@
 	name = Markus Binsteiner
 [alias]
 	co = checkout
-	uncommit = reset HEAD^
+	uncommit = reset --mixed HEAD~
+	ammend = commit --amend
 	ct = commit
 	st = status
 	br = branch
+	branches = branch -a
+	stashes = stash list
+	unstage = reset -q HEAD --
 	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
 	type = cat-file -t
 	dump = cat-file -p
+	graph = log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
+	precommit = diff --cached --diff-algorithm=minimal -w
 
 [core]
 	safecrlf = true
