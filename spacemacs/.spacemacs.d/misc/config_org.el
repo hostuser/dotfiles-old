@@ -48,6 +48,20 @@
                  ("\\paragraph{%s}" . "\\paragraph*{%s}")
                  ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
+
+  (eval-after-load 'ox '(require 'ox-koma-letter))
+  (eval-after-load 'ox-koma-letter
+    '(progn
+       (add-to-list 'org-latex-classes
+                    '("my-letter"
+                      "\\documentclass[a4paper,10pt,DIV=9]\{scrlttr2\}
+     \\usepackage[english]{babel}
+     \[DEFAULT-PACKAGES]
+     \[PACKAGES]
+     \[EXTRA]"))
+
+       (setq org-koma-letter-default-class "my-letter")))
+
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((python . t)
@@ -71,7 +85,8 @@
               ;; "~/Work/figshare/figshare.org"
               "~/Projects/Misc/rdm_todo.org"
               "~/Projects/rdm-uspo/rdm_tasks.org"
-              "~/Documents/memacs/mail.org"))
+              ;; "~/Documents/memacs/mail.org"
+              ))
 
 
 
