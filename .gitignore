@@ -8,3 +8,4 @@ ssh/.ssh/sockets
 leiningen/.lein/self-installs
 zsh/.zsh-update
 rofi-pass/.config/rofi-pass/last_used
+systemd/.config/systemd/user/setenv.service.wants/
