@@ -117,6 +117,12 @@ alias dc='docker-compose'
 alias fuck='eval $(thefuck $(fc -ln -1))'
 alias FUCK='fuck'
 alias f='fuck'
+alias t='tree -L 2'
+alias t1='tree -L 1'
+alias t2='tree -L 2'
+alias t3='tree -L 3'
+
+alias lR='ls -R'
 
 ## git
 alias gs='git status '
