@@ -62,6 +62,9 @@
 
        (setq org-koma-letter-default-class "my-letter")))
 
+  (eval-after-load 'ox-latex
+    '(add-to-list 'org-latex-packages-alist '("AUTO" "babel" t) t))
+
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((python . t)
