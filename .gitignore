@@ -9,3 +9,9 @@ leiningen/.lein/self-installs
 zsh/.zsh-update
 rofi-pass/.config/rofi-pass/last_used
 systemd/.config/systemd/user/setenv.service.wants/
+ssh/.ssh/*rsa*
+ssh/.ssh/id*
+ssh/.ssh/hostuser*
+ssh/.ssh/*seahorse*
+ssh/.ssh/authorized_keys
+ssh/.ssh/known_hosts*

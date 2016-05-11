@@ -4,4 +4,5 @@ beets/.config/beets/discogs_token.json filter=git-crypt diff=git-crypt
 fonts/.fonts/* filter=git-crypt diff=git-crypt
 flydict/dict filter=git-crypt diff=git-crypt
 imapfilter/.imapfilter/* filter=git-crypt diff=git-crypt
-isync/.mbsyncrc
+isync/.mbsyncrc filter=git-crypt diff=git-crypt
+ssh/.ssh/config filter=git-crypt diff=git-crypt
