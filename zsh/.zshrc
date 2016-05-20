@@ -6,22 +6,25 @@ zplug "zsh-users/zsh-syntax-highlighting"
 
 zplug "b4b4r07/zplug"
 source /usr/local/bin/activate.sh
+
 zplug "plugins/autoenv", from:oh-my-zsh
-zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/git", from:oh-my-zsh, nice:10
 zplug "plugins/pip", from:oh-my-zsh
-zplug "plugins/lein", from:oh-my-zsh
+zplug "plugins/lein", from:oh-my-zsh, nice:10
 zplug "plugins/mvn", from:oh-my-zsh
-zplug "plugins/gradle", from:oh-my-zsh
+zplug "plugins/gradle", from:oh-my-zsh, nice:10
 zplug "plugins/python", from:oh-my-zsh
 zplug "plugins/fabric", from:oh-my-zsh
-zplug "plugins/debian", from:oh-my-zsh
+zplug "plugins/debian", from:oh-my-zsh, nice:10
 zplug "plugins/command-not-found", from:oh-my-zsh
 zplug "plugins/extract", from:oh-my-zsh
 zplug "plugins/docker", from:oh-my-zsh
 zplug "plugins/sudo", from:oh-my-zsh
 zplug "plugins/rsync", from:oh-my-zsh
 zplug "plugins/pass", from:oh-my-zsh
-zplug "themes/ys", from:oh-my-zsh
+
+zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh", nice:14
+zplug "themes/ys", from:oh-my-zsh, nice:15
 # zplug "tylerreckart/odin"
 
 # Install plugins if there are plugins that have not been installed
