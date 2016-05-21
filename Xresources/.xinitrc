@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # Test if $1 is available
 isavailable() {
