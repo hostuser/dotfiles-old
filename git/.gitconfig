@@ -19,7 +19,7 @@
 
 [core]
 	safecrlf = true
-	autocrlf = input
+	autocrlf = false
 
 [push]
 	default = simple
