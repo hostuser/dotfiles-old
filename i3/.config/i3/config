@@ -182,7 +182,8 @@ mode	 "focus" {
 }
 
 mode $sysmenu {
-     bindsym e exec loginctl terminate-user markus
+#     bindsym e exec loginctl terminate-user markus
+     bindsym e exec i3 exit
      bindsym s exec systemctl suspend; mode "default"
      bindsym p exec systemctl poweroff; mode "default"
      bindsym r exec systemctl reboot; mode "default"
@@ -240,9 +241,12 @@ for_window [title="^pinentry$"] floating enable
 # startup
 exec	 --no-startup-id /bin/bash /home/markus/config/init_session.sh
 exec --no-startup-id urxvt -name terminal_scratchpad &
+exec --no-startup-id nm-applet &
+exec --no-startup-id xfce4-power-manager &
+exec --no-startup-id seafile-applet &
 
-exec –no-startup-id sleep 1 && xfce4-volumed
-exec –no-startup-id sleep 2 && xfce4-power-manager
+#	exec --no-startup-id sleep 1 && xfce4-volumed
+#exec –no-startup-id sleep 2 && xfce4-power-manager
 
 # exec  --no-startup-id /usr/bin/compton &
 # exec --no-startup-id /usr/bin/dunst -config /home/markus/config/dunst/dunstrc &
