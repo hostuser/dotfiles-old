@@ -200,7 +200,9 @@ alias port="netstat -tulanp"
 alias listen="lsof -P -i -n"
 
 # unalias
+alias di=x
 unalias di
+alias ag=x
 unalias ag
 
 # bindkeys
