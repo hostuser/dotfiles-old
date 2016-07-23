@@ -5,7 +5,9 @@ zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting"
 
 zplug "b4b4r07/zplug"
-source /usr/local/bin/activate.sh
+if [ -f /usr/local/bin/activate.sh ]; then
+   source /usr/local/bin/activate.sh
+fi
 
 zplug "plugins/autoenv", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh, nice:10
@@ -183,7 +185,7 @@ export ALTERNATE_EDITOR=""
 export EDITOR="et"
 export VISUAL=""
 
-alias zile="et"
+#alias zile="et"
 
 alias p='get_process_id'
 alias pp='get_process_parents'
