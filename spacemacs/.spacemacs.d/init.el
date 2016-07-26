@@ -47,6 +47,7 @@ values."
      lua
      python
      markdown
+     latex
      yaml
      (org :variables org-enable-github-support t)
      ;; (shell :variables
@@ -334,8 +335,24 @@ you should place you code here."
   (setq tramp-default-method "ssh")
 
   (setq x-select-enable-primary t)
-
   (global-company-mode)
+
+  (bind-key* "C-j" 'er/expand-region)
+
+
+  ;; to sort
+  (setq-default TeX-master nil) ; Query for master file.
+  (progn (setq TeX-view-program-selection '((output-pdf "Zathura"))))
+  (setq TeX-source-correlate-mode t)
+  (setq TeX-source-correlate-start-server t)
+  (setq TeX-source-correlate-method 'synctex)
+  (setq TeX-view-program-list
+        '(("Okular" "okular --unique %o#src:%n`pwd`/./%b")
+          ("Skim" "displayline -b -g %n %o %b")
+          ("Zathura"
+           ("zathura %o"
+            (mode-io-correlate
+             " --synctex-forward %n:0:%b -x \"emacsclient +%{line} %{input}\"")))))
 
   )
 
