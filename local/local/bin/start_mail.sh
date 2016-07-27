@@ -2,7 +2,7 @@
 
 set -e
 
-/home/markus/.nix-profile/bin/pass misc/dummy
+$HOME/.nix-profile/bin/pass misc/dummy
 
 systemctl --user start mail_markus_folders.timer
 systemctl --user start mail_markus_inbox.timer

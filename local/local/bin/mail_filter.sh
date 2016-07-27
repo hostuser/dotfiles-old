@@ -2,4 +2,4 @@
 
 ACCOUNT=$1
 
-imapfilter -c ~/config/imapfilter/.imapfilter/config.${ACCOUNT}.lua
+imapfilter -c ~/dotfiles/imapfilter/.imapfilter/config.${ACCOUNT}.lua
