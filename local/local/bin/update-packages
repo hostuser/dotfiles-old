@@ -1,0 +1,5 @@
+#! /usr/bin/env bash
+
+cd ~/Seafile/workstation_think/ansible-workstation-playbook
+
+ansible-playbook --ask-become-pass play.yml -t workstation:packages
