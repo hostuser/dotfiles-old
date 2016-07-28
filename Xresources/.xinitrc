@@ -23,4 +23,13 @@ isavailable udiskie && udiskie --tray --use-udisks2 &
 
 echo $PATH > /tmp/path
 
+~/.screenlayout/desk.sh
+
+#pkill -9 gpg-agent eval $(gpg-agent --daemon --enable-ssh-support --sh)
+
+eval $(gpg-agent --daemon)
+export GPG_AGENT_INFO
+export SSH_AUTH_SOCK
+export SSH_AGENT_PID
+
 exec i3
