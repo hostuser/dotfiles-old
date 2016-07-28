@@ -1,7 +1,7 @@
 # work displays
-set $sideoutput eDP1
-set $mainoutput DP1-1
-set $miscoutput DP1-2
+set $mainoutput LVDS1
+set $leftoutput DP2
+
 
 # workspace related config
 
@@ -18,13 +18,13 @@ set $ws9 9
 
 workspace "$ws1" output "$leftoutput"
 workspace "$ws2" output "$leftoutput"
-workspace "$ws3" output "$mainoutput"
-workspace "$ws4" output "$mainoutput"
-workspace "$ws5" output "$mainoutput"
+workspace "$ws3" output "$leftoutput"
+workspace "$ws4" output "$leftoutput"
+workspace "$ws5" output "$leftoutput"
 workspace "$ws6" output "$mainoutput"
 workspace "$ws7" output "$mainoutput"
 workspace "$ws8" output "$mainoutput"
-workspace "$ws9" output "$sideoutput"
+workspace "$ws9" output "$mainoutput"
 
 workspace number output 2
 

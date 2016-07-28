@@ -112,7 +112,7 @@ function exists { which $1 &> /dev/null }
 # aliases
 # ls
 alias lr='ls -larth'
-alias sudo='sudo "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"'
+alias sudo='sudo env "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"'
 
 # verbose copy using rsync
 alias cpv="rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --"
