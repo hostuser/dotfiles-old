@@ -16,17 +16,16 @@ set $ws7 7
 set $ws8 8
 set $ws9 9
 
-workspace "$ws1" output "$leftoutput"
-workspace "$ws2" output "$leftoutput"
-workspace "$ws3" output "$leftoutput"
-workspace "$ws4" output "$leftoutput"
-workspace "$ws5" output "$leftoutput"
-workspace "$ws6" output "$mainoutput"
-workspace "$ws7" output "$mainoutput"
-workspace "$ws8" output "$mainoutput"
-workspace "$ws9" output "$mainoutput"
+# workspace "$ws1" output "$mainoutput"
+# workspace "$ws2" output "$mainoutput"
+# workspace "$ws3" output "$mainoutput"
+# workspace "$ws4" output "$mainoutput"
+# workspace "$ws5" output "$mainoutput"
+# workspace "$ws6" output "$mainoutput"
+# workspace "$ws7" output "$mainoutput"
+# workspace "$ws8" output "$mainoutput"
+# workspace "$ws9" output "$mainoutput"
 
-workspace number output 2
 
 # switch to workspace
 bindsym	 $mod+1 workspace "$ws1"
@@ -198,11 +197,8 @@ bindsym $mod+shift+l mode $sysmenu
 bindsym	 $mod+Control+r mode "resize"
 bindsym	 $mod+space mode "focus"
 
-# scratchpad stuff
-for_window [instance="terminal_scratchpad"] move window to scratchpad
-for_window [instance="ncmpcpp_scratchpad"] move window to scratchpad
-bindsym F1 [instance="terminal_scratchpad"] scratchpad show
-bindsym F2 [instance="ncmpcpp_scratchpad"] scratchpad show
+bindsym Shift+F1 exec ~/local/bin/laptop.sh
+bindsym Shift+F2 exec ~/local/bin/desk.sh
 
 bindsym $mod+u scratchpad show
 bindsym F8 scratchpad show
@@ -240,10 +236,12 @@ for_window [title="^pinentry$"] floating enable
 
 # startup
 exec	 --no-startup-id /bin/bash /home/markus/config/init_session.sh
-exec --no-startup-id urxvt -name terminal_scratchpad &
 exec --no-startup-id nm-applet &
 exec --no-startup-id xfce4-power-manager &
 exec --no-startup-id seafile-applet &
+
+exec --no-startup-id xfce4-power-manager &
+
 
 #	exec --no-startup-id sleep 1 && xfce4-volumed
 #exec –no-startup-id sleep 2 && xfce4-power-manager
@@ -252,7 +250,6 @@ exec --no-startup-id seafile-applet &
 # exec --no-startup-id /usr/bin/dunst -config /home/markus/config/dunst/dunstrc &
 # exec --no-startup-id /home/markus/local/bin/rclmon.sh start &
 # exec --no-startup-id "pulseaudio --start"
-# exec --no-startup-id urxvt -name ncmpcpp_scratchpad -e 'ncmpcpp' &
 # exec  --no-startup-id /usr/bin/autocutsel -fork
 # exec --no-startup-id /usr/bin/autocutsel -selection PRIMARY -fork
 # exec 	--no-startup-id /home/markus/.nix-profile/bin/udiskie --tray &
