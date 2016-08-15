@@ -20,50 +20,26 @@
   (setq org-todo-keyword-faces
         '(("TODO" . org-warning) ("WAIT" . "blue") ("CANCELLED" . (:foreground "blue" :weight bold))))
 
+  ;;;; latex export
+  ;;;; inspiration from: https://github.com/suvayu/.emacs.d/blob/master/org-mode-config.el#L190
+
+  (require 'ox)
   (require 'ox-latex)
-  (add-to-list 'org-latex-classes
-               '("handout"
-                 "\\documentclass{tufte-handout}
-\\usepackage{color}
-\\usepackage{amssymb}
-\\usepackage{amsmath}
-\\usepackage{gensymb}
-\\usepackage{nicefrac}
-\\usepackage{units}"
-                 ("\\section{%s}" . "\\section*{%s}")
-                 ("\\subsection{%s}" . "\\subsection*{%s}")
-                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
-                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+  (require 'ox-beamer)
+  (require 'ox-html)
+  (require 'ox-koma-letter)
+  (require 'ox-md)
+  (require 'ox-odt)
 
-  (add-to-list 'org-latex-classes
-               '("tuftebook"
-                 "\\documentclass{tufte-book}\n
-\\usepackage{color}
-\\usepackage{amssymb}
-\\usepackage{gensymb}
-\\usepackage{nicefrac}
-\\usepackage{units}"
-                 ("\\section{%s}" . "\\section*{%s}")
-                 ("\\subsection{%s}" . "\\subsection*{%s}")
-                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
-                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+  (setq org-latex-to-pdf-process
+        '("xelatex -interaction nonstopmode %f"
+          "xelatex -interaction nonstopmode %f"))
 
+  (require 'org_latex_classes)
 
-  (eval-after-load 'ox '(require 'ox-koma-letter))
-  (eval-after-load 'ox-koma-letter
-    '(progn
-       (add-to-list 'org-latex-classes
-                    '("my-letter"
-                      "\\documentclass[a4paper,10pt,DIV=9]\{scrlttr2\}
-     \\usepackage[english]{babel}
-     \[DEFAULT-PACKAGES]
-     \[PACKAGES]
-     \[EXTRA]"))
+  ;; (eval-after-load 'ox-latex
+  ;; '(add-to-list 'org-latex-packages-alist '("AUTO" "babel" t) t))
 
-       (setq org-koma-letter-default-class "my-letter")))
-
-  (eval-after-load 'ox-latex
-    '(add-to-list 'org-latex-packages-alist '("AUTO" "babel" t) t))
 
   (org-babel-do-load-languages
    'org-babel-load-languages

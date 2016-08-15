@@ -1,6 +1,6 @@
 #! /bin/bash
 
-mkdir ~/.email/posteo
+mkdir -p ~/.email/posteo
 
 mail_inbox.sh posteo
 mail_folders.sh posteo

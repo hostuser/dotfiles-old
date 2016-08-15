@@ -341,6 +341,8 @@ you should place you code here."
 
 
   ;; to sort
+  (setq latex-run-command "xelatex")
+  (setq-default TeX-engine 'xetex)
   (setq-default TeX-master nil) ; Query for master file.
   (progn (setq TeX-view-program-selection '((output-pdf "Zathura"))))
   (setq TeX-source-correlate-mode t)
