@@ -23,9 +23,13 @@ isavailable udiskie && udiskie --tray --use-udisks2 &
 
 echo $PATH > /tmp/path
 
-~/.screenlayout/desk.sh
+#~/.screenlayout/desk.sh
 
 #pkill -9 gpg-agent eval $(gpg-agent --daemon --enable-ssh-support --sh)
+
+xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 1
+xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Button" 2
+xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Timeout" 200
 
 eval $(gpg-agent --daemon)
 export GPG_AGENT_INFO
