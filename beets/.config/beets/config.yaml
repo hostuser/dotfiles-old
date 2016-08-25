@@ -6,10 +6,6 @@ import:
   move: yes
   resume: yes
 
-musicbrainz:
-    host: 192.168.178.37:5000
-    ratelimit: 100
-
 paths:
     albumtype:soundtrack: Soundtracks/$album/$track. $artist - $title
     comp: Compilations/$album%aunique{}/$track. $artist - $title
@@ -17,7 +13,7 @@ paths:
     default: Artists/$albumartist/$album%aunique{}/$track. $title
 
 
-plugins: fetchart lyrics lastgenre discogs chroma
+plugins: fetchart lastgenre discogs chroma
 
 chroma:
   auto: yes
