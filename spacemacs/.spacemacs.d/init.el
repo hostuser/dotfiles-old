@@ -49,6 +49,7 @@ values."
      markdown
      latex
      yaml
+     ansible
      (org :variables org-enable-github-support t)
      ;; (shell :variables
      ;;        shell-default-height 30
