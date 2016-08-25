@@ -41,6 +41,7 @@ fi
 zplug load --verbose
 
 setopt HIST_FIND_NO_DUPS
+setopt IGNORE_EOF
 
 # functions
 mcd() {
@@ -112,7 +113,7 @@ function exists { which $1 &> /dev/null }
 # aliases
 # ls
 alias lr='ls -larth'
-alias sudo='sudo env "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"'
+alias sudo='sudo env "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH" '
 
 # verbose copy using rsync
 alias cpv="rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --"
@@ -183,9 +184,7 @@ fi
 
 export ALTERNATE_EDITOR=""
 export EDITOR="et"
-export VISUAL=""
-
-#alias zile="et"
+export VISUAL="ec"
 
 alias p='get_process_id'
 alias pp='get_process_parents'
@@ -211,6 +210,7 @@ unalias ag
 bindkey -e
 bindkey '^L' backward-kill-word  # helm-like delete last part of path
 
+
 # autoloads
 export WORDCHARS="_-"
 autoload select-word-style
@@ -231,10 +231,9 @@ fi
 
 if exists fasd; then
     eval "$(fasd --init auto)"
-    alias j='fasd_cd -d'
-    alias jj='fasd_cd -d -i'
-    unalias z
-    alias z='f -e zile'
+    bindkey '^X^A' fasd-complete    # C-x C-a to do fasd-complete (files and directories)
+    bindkey '^X^F' fasd-complete-f  # C-x C-f to do fasd-complete-f (only files)
+    bindkey '^X^D' fasd-complete-d  # C-x C-d to do fasd-complete-d (only directories)
 fi
 
 if [ -e /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]; then . /usr/share/virtualenvwrapper/virtualenvwrapper.sh; fi
@@ -246,3 +245,4 @@ export NIXPKGS=$HOME/src/system/nixpkgs
 
 # don't use cached auto-complete
 zstyle ":completion:*:commands" rehash 1
+zstyle ':completion:*:sudo::' environ  PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH" HOME="/root"
