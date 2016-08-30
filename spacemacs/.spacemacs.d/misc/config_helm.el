@@ -15,13 +15,13 @@
    (append
 
     (if (projectile-project-p)
-        '(helm-source-projectile-buffers-list
-          helm-source-projectile-files-list)
+        '(helm-source-projectile-files-list
+          helm-source-projectile-projects
+          helm-source-projectile-buffers-list)
       '())
 
     '(helm-source-buffers-list
       helm-source-recentf
-      helm-source-projectile-projects
       helm-source-locate
       helm-source-buffer-not-found
       helm-source-file-name-history
