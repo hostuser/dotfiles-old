@@ -1,5 +1,5 @@
 ZSHDIR=$HOME/.zsh
-source ~/.zplug/zplug
+source ~/.zplug/init.zsh
 
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting"
