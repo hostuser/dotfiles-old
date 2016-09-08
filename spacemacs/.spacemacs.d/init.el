@@ -50,6 +50,7 @@ values."
      latex
      yaml
      ansible
+     common-lisp
      (org :variables org-enable-github-support t)
      ;; (shell :variables
      ;;        shell-default-height 30
@@ -322,7 +323,7 @@ you should place you code here."
 
   ;; aggressive-indent
   (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
-  (add-hook 'python-mode-hook #'aggressive-indent-mode)
+  ;;(add-hook 'python-mode-hook #'aggressive-indent-mode)
   ;; configure org mode
   (with-eval-after-load 'org
     (require 'config_org))
@@ -342,6 +343,8 @@ you should place you code here."
 
 
   ;; to sort
+  (load (expand-file-name "~/quicklisp/slime-helper.el"))
+
   (setq latex-run-command "xelatex")
   (setq-default TeX-engine 'xetex)
   (setq-default TeX-master nil) ; Query for master file.
