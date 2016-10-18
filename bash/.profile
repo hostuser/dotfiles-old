@@ -20,3 +20,5 @@ export PATH=$PATH:$GOBIN
 export SSH_AUTH_SOCK="${HOME}/.gnupg/S.gpg-agent.ssh"
 
 export XDG_DATA_DIRS=/home/markus/.nix-profile/share:/usr/local/share/:/usr/share
+
+export GTAGSLABEL=pygments
