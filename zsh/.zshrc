@@ -25,7 +25,7 @@ zplug "plugins/sudo", from:oh-my-zsh
 zplug "plugins/rsync", from:oh-my-zsh
 zplug "plugins/pass", from:oh-my-zsh
 
-zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh", nice:14
+#zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh", nice:14
 zplug "themes/ys", from:oh-my-zsh, nice:15
 # zplug "tylerreckart/odin"
 
@@ -237,11 +237,30 @@ if exists fasd; then
 fi
 
 if [ -e /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]; then . /usr/share/virtualenvwrapper/virtualenvwrapper.sh; fi
-if [ -e /usrlocal/bin/virtualenvwrapper.sh ]; then . /usr/local/bin/virtualenvwrapper.sh; fi
+if [ -e /usr/local/bin/virtualenvwrapper.sh ]; then . /usr/local/bin/virtualenvwrapper.sh; fi
 
 export WORKON_HOME=$HOME/.virtualenvs
 
 export NIXPKGS=$HOME/src/system/nixpkgs
+
+# less stuff (from: https://www.topbug.net/blog/2016/09/27/make-gnu-less-more-powerful/ )
+export LESS='--quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --tabs=4 --no-init --window=-4'
+# Set colors for less. Borrowed from https://wiki.archlinux.org/index.php/Color_output_in_console#less
+export LESS_TERMCAP_mb=$'\E[1;31m'     # begin bold
+export LESS_TERMCAP_md=$'\E[1;36m'     # begin blink
+export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
+export LESS_TERMCAP_so=$'\E[01;44;33m' # begin reverse video
+export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
+export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
+export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
+# Set the Less input preprocessor.
+if type lesspipe >/dev/null 2>&1; then
+  export LESSOPEN='|lesspipe %s'
+fi
+# if type pygmentize >/dev/null 2>&1; then
+  # export LESSCOLORIZER='pygmentize'
+#fi
+
 
 # don't use cached auto-complete
 zstyle ":completion:*:commands" rehash 1
