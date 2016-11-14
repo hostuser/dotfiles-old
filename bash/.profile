@@ -17,7 +17,7 @@ export GOPATH="/home/markus/local/share/go"
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 
-export SSH_AUTH_SOCK="${HOME}/.gnupg/S.gpg-agent.ssh"
+#export SSH_AUTH_SOCK="${HOME}/.gnupg/S.gpg-agent.ssh"
 
 export XDG_DATA_DIRS=/home/markus/.nix-profile/share:/usr/local/share/:/usr/share
 
