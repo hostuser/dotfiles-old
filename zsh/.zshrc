@@ -124,7 +124,6 @@ password_entries() {
       find -L "$prefix" \( -name .git -o -name .gpg-id \) -prune -o $@ -print 2>/dev/null | sed -e "s#${prefix}/\{0,1\}##" -e 's#\.gpg##' | sort
 }
 
-
 function exists { which $1 &> /dev/null }
 
 
@@ -283,3 +282,12 @@ fi
 # don't use cached auto-complete
 zstyle ":completion:*:commands" rehash 1
 zstyle ':completion:*:sudo::' environ  PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH" HOME="/root"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_COMPLETION_OPTS='+c'
+export FZF_COMPLETION_TRIGGER=';;'
+export FZF_DEFAULT_COMMAND="find -L $HOME \( -path '*/.*' -o -fstype 'dev' -o -fstype 'proc' \) -prune -o -type f -print -o -type d -print -o -type l -print 2> /dev/null | sed 1d"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="find -L $HOME \( -path '*/\.*' -o -fstype 'dev' -o -fstype 'proc' \) -prune -o -type d -print 2> /dev/null | sed 1d"
+
+

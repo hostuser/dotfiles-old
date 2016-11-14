@@ -5,6 +5,8 @@ export DISPLAY=:0
 export XAUTHORITY=/home/markus/.Xauthority
 source /home/markus/.dbus/session-bus/*
 source /home/markus/.profile
-systemctl --user import-environment XDG_CONFIG_HOME PATH DISPLAY XAUTHORITY DBUS_SESSION_BUS_ADDRESS
+source /home/markus/.gnupg/gpg-agent-info
+
+systemctl --user import-environment XDG_CONFIG_HOME PATH DISPLAY XAUTHORITY DBUS_SESSION_BUS_ADDRESS SSH_AGENT_PID SSH_AUTH_SOCK GPG_AGENT_INFO GPG_AGENT_PID GPG_TTY
 
 #/home/markus/local/bin/mail_work.sh

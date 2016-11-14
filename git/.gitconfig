@@ -25,3 +25,5 @@
 	default = simple
 [merge]
 	tool = meld
+[status]
+	showUntrackedFiles = all
