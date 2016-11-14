@@ -84,12 +84,14 @@ values."
      nginx
      pdf-tools
 
+     deft
+
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(key-chord password-generator xclip)
+   dotspacemacs-additional-packages '(key-chord password-generator xclip helm-projectile)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -344,6 +346,7 @@ you should place your code here."
 
   ;;;; external files
   (require 'markus_functions)
+  (require 'config_helm)
 
   ;;;; key-chords
   (key-chord-define-global "jk" 'avy-goto-word-or-subword-1)
@@ -367,7 +370,8 @@ you should place your code here."
   (global-set-key (kbd "M-P") 'avy-pop-mark)
   (global-set-key (kbd "C-S-s") 'swiper-all)
 
-  (global-set-key (kbd "C-\\") 'helm-mini)
+  (global-set-key (kbd "C-\\") 'my-helm)
+  (global-set-key (kbd "C-|") 'counsel-projectile-switch-project)
   (global-set-key (kbd "M-i") 'helm-semantic-or-imenu)
 
   (global-set-key (kbd "C-<") 'winner-undo)
@@ -444,7 +448,8 @@ you should place your code here."
   ;;;; deft
   ;; set deft notes directory
   (setq deft-directory "~/Documents/notes")
-
+  (setq deft-extensions '("org"))
+  (setq deft-use-filename-as-title t)
 
   ;;;; misc
   ;; display current directory in modline
@@ -478,8 +483,8 @@ you should place your code here."
   (setq company-idle-delay 0)
   (setq company-show-numbers t)
 
-   ;;;; eval after loads
 
+   ;;;; eval after loads
   (eval-after-load 'smartparens
     '(progn
        (sp-local-pair 'inferior-python-mode "(" nil :unless nil)
@@ -500,6 +505,30 @@ you should place your code here."
   (with-eval-after-load 'avy
     (advice-add 'swiper :before 'avy-push-mark) )
 
+  ;;;; hooks
+
+  ;;;; hydras
+  (defhydra multiple-cursors-hydra (:hint nil)
+    "
+     ^Up^            ^Down^        ^Other^
+----------------------------------------------
+[_p_]   Next    [_n_]   Next    [_l_] Edit lines
+[_P_]   Skip    [_N_]   Skip    [_a_] Mark all
+[_M-p_] Unmark  [_M-n_] Unmark  [_r_] Mark by regexp
+^ ^             ^ ^             [_q_] Quit
+"
+  ("l" mc/edit-lines :exit t)
+  ("a" mc/mark-all-like-this :exit t)
+  ("n" mc/mark-next-like-this)
+  ("N" mc/skip-to-next-like-this)
+  ("M-n" mc/unmark-next-like-this)
+  ("p" mc/mark-previous-like-this)
+  ("P" mc/skip-to-previous-like-this)
+  ("M-p" mc/unmark-previous-like-this)
+  ("r" mc/mark-all-in-region-regexp :exit t)
+  ("q" nil))
+
+  (global-set-key (kbd "M-SPC s m") 'multiple-cursors-hydra/body)
 
   )
 
@@ -510,10 +539,13 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" default)))
  '(evil-want-Y-yank-to-eol t)
  '(package-selected-packages
    (quote
-    (xclip password-generator key-chord origami smtpmail-multi powerline parent-mode helm helm-core flx smartparens iedit anzu evil goto-chg undo-tree diminish projectile hydra highlight seq spinner pkg-info epl bind-map bind-key packed async f dash s avy popup package-build yaml-mode xterm-color web-mode tagedit stickyfunc-enhance srefactor smeargle slime slim-mode shell-pop scss-mode sass-mode rainbow-mode rainbow-identifiers pug-mode pdf-tools pandoc-mode ox-pandoc ox-gfm orgit org-projectile org-present org org-pomodoro alert log4e gntp org-download nginx-mode mwim multi-term mmm-mode markdown-toc markdown-mode magit-gitflow magit-gh-pulls lua-mode less-css-mode jinja2-mode imenu-list htmlize helm-gtags haml-mode gnuplot gitignore-mode github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gist gh marshal logito pcache ht gh-md ggtags flyspell-correct-ivy flyspell-correct flycheck-pos-tip pos-tip flycheck fish-mode fasd grizzl evil-magit magit git-commit with-editor eshell-z eshell-prompt-extras esh-help emmet-mode dockerfile-mode docker json-mode tablist magit-popup docker-tramp json-snatcher json-reformat diff-hl company-web web-completion-data company-statistics company-shell company-auctex company-anaconda company common-lisp-snippets color-identifiers-mode clojure-snippets clj-refactor inflections edn multiple-cursors paredit peg cider-eval-sexp-fu cider queue clojure-mode auto-yasnippet yasnippet auto-dictionary auctex ansible-doc ansible ac-ispell auto-complete debbugs yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode cython-mode anaconda-mode pythonic wgrep smex ivy-hydra counsel-projectile counsel swiper ivy ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
+    (deft xclip password-generator key-chord origami smtpmail-multi powerline parent-mode helm helm-core flx smartparens iedit anzu evil goto-chg undo-tree diminish projectile hydra highlight seq spinner pkg-info epl bind-map bind-key packed async f dash s avy popup package-build yaml-mode xterm-color web-mode tagedit stickyfunc-enhance srefactor smeargle slime slim-mode shell-pop scss-mode sass-mode rainbow-mode rainbow-identifiers pug-mode pdf-tools pandoc-mode ox-pandoc ox-gfm orgit org-projectile org-present org org-pomodoro alert log4e gntp org-download nginx-mode mwim multi-term mmm-mode markdown-toc markdown-mode magit-gitflow magit-gh-pulls lua-mode less-css-mode jinja2-mode imenu-list htmlize helm-gtags haml-mode gnuplot gitignore-mode github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gist gh marshal logito pcache ht gh-md ggtags flyspell-correct-ivy flyspell-correct flycheck-pos-tip pos-tip flycheck fish-mode fasd grizzl evil-magit magit git-commit with-editor eshell-z eshell-prompt-extras esh-help emmet-mode dockerfile-mode docker json-mode tablist magit-popup docker-tramp json-snatcher json-reformat diff-hl company-web web-completion-data company-statistics company-shell company-auctex company-anaconda company common-lisp-snippets color-identifiers-mode clojure-snippets clj-refactor inflections edn multiple-cursors paredit peg cider-eval-sexp-fu cider queue clojure-mode auto-yasnippet yasnippet auto-dictionary auctex ansible-doc ansible ac-ispell auto-complete debbugs yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode cython-mode anaconda-mode pythonic wgrep smex ivy-hydra counsel-projectile counsel swiper ivy ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
