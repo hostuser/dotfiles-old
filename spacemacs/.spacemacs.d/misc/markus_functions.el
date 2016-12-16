@@ -177,4 +177,12 @@ Call again to toggle back."
 
 (global-set-key (kbd "M-SPC t C-y") 'makkus/window-toggle-split-direction)
 
+
+;; from: http://stackoverflow.com/questions/36814730/emacs-helm-how-to-auto-recenter-after-jump
+(defun makkus/recenter-no-redraw (&optional arg)
+  "Like `recenter', but no redrawing."
+  (interactive "P")
+  (let ((recenter-redisplay nil))
+    (recenter arg)))
+
 (provide 'markus_functions)

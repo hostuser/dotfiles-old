@@ -43,7 +43,7 @@ values."
 
      (auto-completion :variables
                       auto-completion-tab-key-behavior 'complete
-                      auto-completion-return-key-behavior 'nil
+                      auto-completion-return-key-behavior 'complete
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-sort-by-usage t
                       auto-completion-complete-with-key-sequence nil)
@@ -58,7 +58,8 @@ values."
      git
      github
 
-     python
+     (python :variables python-enable-yapf-format-on-save t python-sort-imports-on-save t)
+
      emacs-lisp
      (shell :variables
             shell-default-height 30
@@ -91,7 +92,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(key-chord password-generator xclip helm-projectile)
+   dotspacemacs-additional-packages '(key-chord password-generator xclip helm-projectile helm-gtags)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -351,7 +352,10 @@ you should place your code here."
   ;;;; key-chords
   (key-chord-define-global "jk" 'avy-goto-word-or-subword-1)
   (key-chord-define-global "JK" 'makkus/avy-goto-end-of-word-or-subword-1)
-  (key-chord-define-global ";j" 'hydra-navigation/body)
+  ;;(key-chord-define-global ";j" 'hydra-navigation/body)
+  (key-chord-define-global ";j" 'ace-window)
+
+  (key-chord-define-global "vv" 'er/expand-region)
 
   ;; (key-chord-define-global "jg" 'avy-goto-line)
   (key-chord-define-global "jl" 'avy-goto-line)
@@ -366,7 +370,7 @@ you should place your code here."
 
 
   ;;;; keybindings
-  (global-set-key (kbd "C-o") 'ace-window)
+  (global-set-key (kbd "C-o") 'other-window)
   (global-set-key (kbd "M-P") 'avy-pop-mark)
   (global-set-key (kbd "C-S-s") 'swiper-all)
 
@@ -484,6 +488,9 @@ you should place your code here."
   (setq company-show-numbers t)
 
 
+  ;; python
+  (pyenv-mode)
+
    ;;;; eval after loads
   (eval-after-load 'smartparens
     '(progn
@@ -506,6 +513,11 @@ you should place your code here."
     (advice-add 'swiper :before 'avy-push-mark) )
 
   ;;;; hooks
+  (advice-add 'isearch-search :after (lambda (&rest args) "Recenter" (when isearch-success (makkus/recenter-no-redraw))))
+  (advice-add 'swiper :after (lambda (&rest args) "Recenter" (when isearch-success (makkus/recenter-no-redraw))))
+  (advice-add 'helm-semantic-or-imenu :after (lambda (&rest args) "Recenter" (when isearch-success (makkus/recenter-no-redraw))))
+
+
 
   ;;;; hydras
   (defhydra multiple-cursors-hydra (:hint nil)
