@@ -1,5 +1,12 @@
 export PATH=$HOME/local/bin:$PATH
-source $HOME/.nix-profile/etc/profile.d/nix.sh
+if [ -f $HOME/.nix-profile/etc/profile.d/nix.sh ];
+then
+	source $HOME/.nix-profile/etc/profile.d/nix.sh
+fi
+
+if [ -d $HOME/.pyenv ]; then
+    export PATH="$HOME/.pyenv/bin:$PATH"
+fi
 
 export XDG_DATA_DIRS=$HOME/.nix-profile/share:/usr/local/share/:/usr/share
 

@@ -1,5 +1,9 @@
 ZSHDIR=$HOME/.zsh
-source ~/.zplug/init.zsh
+
+if [ -f ~/.zplug/init.zsh ]; then
+    source ~/.zplug/init.zsh
+fi
+
 
 # history stuff
 HISTFILE="$HOME/.zsh_history"
@@ -22,20 +26,20 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting"
 
-zplug "b4b4r07/zplug"
+#zplug "zplug/zplug"
 if [ -f /usr/local/bin/activate.sh ]; then
    source /usr/local/bin/activate.sh
 fi
 
 zplug "plugins/autoenv", from:oh-my-zsh
-zplug "plugins/git", from:oh-my-zsh, nice:10
+zplug "plugins/git", from:oh-my-zsh, defer:2
 zplug "plugins/pip", from:oh-my-zsh
-zplug "plugins/lein", from:oh-my-zsh, nice:10
+zplug "plugins/lein", from:oh-my-zsh, defer:2
 zplug "plugins/mvn", from:oh-my-zsh
-zplug "plugins/gradle", from:oh-my-zsh, nice:10
+zplug "plugins/gradle", from:oh-my-zsh, defer:2
 zplug "plugins/python", from:oh-my-zsh
 zplug "plugins/fabric", from:oh-my-zsh
-zplug "plugins/debian", from:oh-my-zsh, nice:10
+zplug "plugins/debian", from:oh-my-zsh, defer:2
 zplug "plugins/command-not-found", from:oh-my-zsh
 zplug "plugins/extract", from:oh-my-zsh
 zplug "plugins/docker", from:oh-my-zsh
@@ -44,8 +48,13 @@ zplug "plugins/rsync", from:oh-my-zsh
 zplug "plugins/pass", from:oh-my-zsh
 
 #zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh", nice:14
-zplug "themes/ys", from:oh-my-zsh, nice:15
+zplug "themes/ys", from:oh-my-zsh, as:theme
+#zplug 'dracula/zsh', as:theme
 # zplug "tylerreckart/odin"
+
+# Then, source plugins and add commands to $PATH
+#zplug load --verbose
+zplug load
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -55,8 +64,7 @@ if ! zplug check --verbose; then
     fi
 fi
 
-# Then, source plugins and add commands to $PATH
-zplug load --verbose
+#zplug install
 
 setopt HIST_FIND_NO_DUPS
 setopt IGNORE_EOF
@@ -253,10 +261,14 @@ if exists fasd; then
     bindkey '^X^D' fasd-complete-d  # C-x C-d to do fasd-complete-d (only directories)
 fi
 
-if [ -e /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]; then . /usr/share/virtualenvwrapper/virtualenvwrapper.sh; fi
-if [ -e /usr/local/bin/virtualenvwrapper.sh ]; then . /usr/local/bin/virtualenvwrapper.sh; fi
+#if [ -e /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]; then . /usr/share/virtualenvwrapper/virtualenvwrapper.sh; fi
+#if [ -e /usr/local/bin/virtualenvwrapper.sh ]; then . /usr/local/bin/virtualenvwrapper.sh; fi
+#export WORKON_HOME=$HOME/.virtualenvs
 
-export WORKON_HOME=$HOME/.virtualenvs
+if [ -d $HOME/.pyenv ]; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
 
 export NIXPKGS=$HOME/src/system/nixpkgs
 
