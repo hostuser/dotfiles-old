@@ -384,7 +384,7 @@ you should place your code here."
   (global-set-key (kbd "C-q") 'delete-other-windows)
   (global-set-key (kbd "<f11>") 'makkus/full-screen-toggle)
 
-  (global-set-key (kbd "C-M-c") 'comment-line)
+  (global-set-key (kbd "C-M-c") 'makkus/comment-or-uncomment-region-or-line)
 
   (global-set-key (kbd "C-(") 'iedit-mode)
   (global-set-key (kbd "C-;") 'avy-goto-word-or-subword-1)
@@ -393,6 +393,9 @@ you should place your code here."
   (global-set-key (kbd "C-x C-b") 'ivy-switch-buffer)
 
   (global-set-key (kbd "M-C-s") 'anzu-query-replace)
+
+  ;; remap keybindings
+  (define-key global-map [remap kill-buffer] 'kill-buffer-and-window)
 
   ;; disable some keybindings
   ;; never suspend
