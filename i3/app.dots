@@ -1,0 +1,4 @@
+pkg:
+ nix:
+  - i3
+  - i3status

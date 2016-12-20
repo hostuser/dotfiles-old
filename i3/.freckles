@@ -1,0 +1,11 @@
+packages:
+  apt:
+    - i3-wm
+    - i3status
+  nix:
+    - i3-wm
+    - i3status
+groups:
+  - x
+tags:
+  - dev
