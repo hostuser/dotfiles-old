@@ -5,9 +5,8 @@ Requires=setenv.service
 
 [Service]
 Type=forking
-#ExecStart=/home/markus/.nix-profile/bin/emacs --daemon=markus
-ExecStart=/usr/bin/emacs --daemon=markus
-ExecStop=/usr/bin/emacsclient -s markus --eval "(progn (setq kill-emacs-hook 'nil) (kill-emacs))"
+ExecStart=/home/markus/.nix-profile/bin/emacs --daemon=markus
+ExecStop=/home/markus/.nix-profile/bin/emacsclient -s markus --eval "(progn (setq kill-emacs-hook 'nil) (kill-emacs))"
 Restart=always
 RestartSec=2
 
