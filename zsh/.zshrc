@@ -270,6 +270,10 @@ if [ -d $HOME/.pyenv ]; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
+if [[ $TERMINIX_ID ]]; then
+    source /etc/profile.d/vte.sh
+fi
+
 export NIXPKGS=$HOME/src/system/nixpkgs
 
 # less stuff (from: https://www.topbug.net/blog/2016/09/27/make-gnu-less-more-powerful/ )
