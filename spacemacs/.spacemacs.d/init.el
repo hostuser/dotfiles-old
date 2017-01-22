@@ -172,7 +172,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 12
+                               :size 10
                                :weight normal
                                :width normal
                                :powerline-scale 1.4)
@@ -517,8 +517,9 @@ you should place your code here."
 
   ;;;; hooks
   (advice-add 'isearch-search :after (lambda (&rest args) "Recenter" (when isearch-success (makkus/recenter-no-redraw))))
-  (advice-add 'swiper :after (lambda (&rest args) "Recenter" (when isearch-success (makkus/recenter-no-redraw))))
-  (advice-add 'helm-semantic-or-imenu :after (lambda (&rest args) "Recenter" (when isearch-success (makkus/recenter-no-redraw))))
+  (advice-add 'swiper :after (lambda (&rest args) "Recenter"  (makkus/recenter-no-redraw)))
+  (advice-add 'helm-semantic-or-imenu :after (lambda (&rest args) "Recenter" (makkus/recenter-no-redraw)))
+  (advice-add 'avy-goto-line :after (lambda (&rest args) "Recenter" (makkus/recenter-no-redraw)))
 
 
 
