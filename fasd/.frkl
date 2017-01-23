@@ -1,0 +1,4 @@
+pkg_mgr: nix
+pkgs:
+  nix:
+  - fasd-unstable
