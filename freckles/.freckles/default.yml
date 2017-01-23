@@ -6,8 +6,8 @@ default_vars:
 details: false
 runs:
 - frecks:
+    install-nix: {}
     checkout: {}
 - frecks:
-    install-nix: {}
     install: {}
     stow: {}
