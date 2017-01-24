@@ -1,17 +1,17 @@
+---
 default_vars:
   dotfiles:
     base_dir: ~/dotfiles
     paths: []
     remote: https://github.com/makkus/dotfiles.git
-details: false
 runs:
-- frecks:
-    install-nix: {}
-    checkout: {}
-- frecks:
-    delete: 
-      files:
-      - .bashrc
-      - .profile
-    install: {}
-    stow: {}
+  - frecks:
+      install-nix: {}
+      checkout: {}
+  - frecks:
+      delete:
+        files:
+          - .bashrc
+          - .profile
+      install: {}
+      stow: {}
