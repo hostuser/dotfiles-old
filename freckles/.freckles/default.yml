@@ -9,5 +9,9 @@ runs:
     install-nix: {}
     checkout: {}
 - frecks:
+    delete: 
+	files:
+          - .bashrc
+          - .profile
     install: {}
     stow: {}
