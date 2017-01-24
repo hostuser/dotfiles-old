@@ -10,8 +10,8 @@ runs:
     checkout: {}
 - frecks:
     delete: 
-	files:
-          - .bashrc
-          - .profile
+      files:
+        - .bashrc
+        - .profile
     install: {}
     stow: {}
