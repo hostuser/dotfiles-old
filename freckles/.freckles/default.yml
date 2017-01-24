@@ -11,7 +11,7 @@ runs:
 - frecks:
     delete: 
       files:
-        - .bashrc
-        - .profile
+      - .bashrc
+      - .profile
     install: {}
     stow: {}
